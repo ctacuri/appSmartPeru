@@ -1,0 +1,145 @@
+<!--
+<div class="navbar-header">
+    <div class="navbar-header"><a class="navbar-brand" href="#">Brand</a></div>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+-->
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SmartPeru</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/main">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/factura">Facturas de venta</a></li>
+                        <li><a href="#">Facturas recurrentes</a></li>
+                        <li><a href="#">Pagos recibidos</a></li>
+                        <li><a href="#">Notas de crédito</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Cotizaciones</li>-->
+                        <li><a href="#">Cotizaciones</a></li>
+                        <li><a href="#">Remisiones</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gastos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Pagos</a></li>
+                        <li><a href="#">Facturas proveedores</a></li>
+                        <li><a href="#">Pagos recurrentes</a></li>
+                        <li><a href="#">Notas de débito</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Cotizaciones</li>-->
+                        <li><a href="#">Ordenes de compra</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contactos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Todos</a></li>
+                        <li><a href="#">Clientes</a></li>
+                        <li><a href="#">Proveedores</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Cotizaciones</li>-->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventario <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Items de venta</a></li>
+                        <li><a href="#">Valor de Inventario</a></li>
+                        <li><a href="#">Ajustes a Inventario</a></li>
+                        <li><a href="#">Gestión de Items</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Cotizaciones</li>-->
+                        <li><a href="#">Lista de precios</a></li>
+                        <li><a href="#">Almacenes</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Bancos</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorías <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Ajustes de categorías</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Cotizaciones</li>-->
+                    </ul>
+                </li>
+                <li><a href="#contact">Reportes</a></li>
+
+                <!--
+                <li>
+                    <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse1" aria-expanded="false" aria-controls="nav-collapse1">
+                        <span style="margin-top: -35px;  !important;">Categories</span>
+                    </a>
+                </li>
+                --.
+
+                <!--
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                -->
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse" aria-expanded="false" aria-controls="nav-collapse">Config</a>
+                </li>
+                <li><a href="/logout">Salir</a></li>
+            </ul>
+
+            <div class="collapse nav navbar-nav nav-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Empresa</a></li>
+                    <li><a href="#">Plantillas</a></li>
+                    <li>
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search" />
+                            </div>
+                        </form>
+                    </li>
+                    <!--<li><a href="#">Print</a></li>
+                    <li><a href="#">Motion</a></li>
+                    <li><a href="#">Mobile apps</a></li>-->
+                </ul>
+
+                <!--
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/logout">Salir</a></li>
+                </ul>
+                -->
+            </div>
+
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>

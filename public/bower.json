@@ -1,0 +1,25 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/ctacuri/appSmartPeru",
+  "authors": [
+    "ctacuri <cesar_hbk@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0",
+    "jqwidgets": "^4.6.4",
+    "highcharts": "^5.0.12"
+  }
+}

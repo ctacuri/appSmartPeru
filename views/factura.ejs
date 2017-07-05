@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title %></title>
+
+    <script type="text/javascript" src="javascripts/scripts.js"></script>
+    <script type="text/javascript" src="javascripts/config.js"></script>
+</head>
+<body>
+
+    <% include menu %>
+
+    <br><br><br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 nopadding">
+                <div id="toolBarFactura"></div>
+                <div id="gridFacturas"></div>
+            </div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#toolBarFactura").jqxToolBar(
+            $.extend( {},
+                vDefaultOptionsToolBar,
+                {
+                    width: '100%',
+                    tools: 'custom | custom | custom | custom | custom | custom ', //| input | custom | custom | custom | custom
+                    initTools: function (type, index, tool, menuToolIninitialization) {
+                        switch (index) {
+                            case 0:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Inicio: </div>";
+                                tool.append(label);
+                                break;
+                            case 1:
+                                var fecha = $("<div id='FechaIniOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme3,
+                                    value: new Date(anioActual, mesActual, 1),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 2:
+                                var label = "<div style='float: left; margin-left: 2px; margin-top: 3px;'>Fin: </div>";
+                                tool.append(label);
+                                break;
+                            case 3:
+                                var fecha = $("<div id='FechaFinOS' style='margin-top: -2px;'></div>").jqxDateTimeInput({
+                                    theme: theme3,
+                                    value: new Date(anioActual, mesActual, ultimoDiaMesActual),
+                                    width: 105,
+                                    height: 25,
+                                    culture: 'es-ES'
+                                });
+                                tool.append(fecha);
+                                break;
+                            case 4:
+                                var searchBtn = $("<div style='float: left; margin-left: 2px; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/search.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme3,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(searchBtn);
+                                searchBtn.click(function (event) {
+                                    //var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var fechaIni = $("#FechaIniOS").val();
+                                    var fechaFin = $("#FechaFinOS").val();
+                                    //var fechaIniSQL = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                    //var fechaFinSQL = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+                                    var datos = {
+                                        fechaIniSql: fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2),
+                                        fechaFinSql: fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2),
+                                        tipoAtencion: ($("#btnTipoAtencion").jqxSwitchButton('checked') ? 'A' : 'P'),
+                                        usuario: usuario
+                                    };
+
+                                });
+                                break;
+                            case 5:
+                                var exportBtn = $("<div style='float: left; margin-left: 2px; margin-top: -2px; cursor: pointer;'><img style='position: relative; margin-top: 0px; margin-left: 3px;' src='images/icon_excel_02_20.png'/><span style='margin-left: 4px; position: relative;'></span></div>").jqxButton({
+                                    theme: theme3,
+                                    width: 30,
+                                    height: 19
+                                });
+                                tool.append(exportBtn);
+                                exportBtn.click(function (event) {
+                                    //var tools = $("#jqxToolBar").jqxToolBar("getTools");
+                                    var fechaIni = $("#FechaIniOS").val();
+                                    var fechaFin = $("#FechaFinOS").val();
+                                    var fechaIniSql = fechaIni.substring(6,10)+'-'+fechaIni.substring(3,5)+"-"+fechaIni.substring(0,2);
+                                    var fechaFinSql = fechaFin.substring(6,10)+'-'+fechaFin.substring(3,5)+"-"+fechaFin.substring(0,2);
+
+                                });
+                                break;
+                        }
+                    }
+                }
+            )
+        );
+
+
+        $("#gridFacturas").jqxGrid(
+            $.extend(
+                {}, vDefaultOptionsGrid,
+            {
+                width: '100%',
+                height: parseInt($(document).height() / 2) + 200,
+                //source: dataAdapter,
+                pageable: true,
+                groupable: false,
+                columns: [
+                    { text: 'Numero', columngroup: 'Details', datafield: 'numero', align: 'center', cellsalign: 'left', width: '10%' },
+                    { text: 'Cliente', columngroup: 'Details', datafield: 'cliente', align: 'center', cellsalign: 'left', width: '40%' },
+                    { text: 'Creacion', columngroup: 'Details', datafield: 'creacion', align: 'center', cellsalign: 'left', width: '10%' },
+                    { text: 'Vencimiento', columngroup: 'Details', datafield: 'vencimiento', align: 'center', cellsalign: 'left', width: '10%' },
+                    { text: 'Total', columngroup: 'Details', datafield: 'total', align: 'center', cellsalign: 'left', cellsformat: 'd2', width: '10%' },
+                    { text: 'Pagado', columngroup: 'Details', datafield: 'pagado', align: 'center', cellsalign: 'left', cellsformat: 'd2', width: '10%' },
+                    { text: 'Por Pagar', columngroup: 'Details', datafield: 'ppagar', align: 'center', cellsalign: 'left', cellsformat: 'd2', width: '10%' }
+                ],
+                columngroups: [
+                    { text: 'Facturas de venta', align: 'center', name: 'Details' }
+                ]
+            }
+            )
+        );
+
+    });
+</script>
+</body>
+</html>
